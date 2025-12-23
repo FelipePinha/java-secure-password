@@ -1,5 +1,9 @@
 package dev.pinha.secure_password.service.validation;
 
+import dev.pinha.secure_password.infra.exception.PasswordValidationException;
+import org.springframework.stereotype.Component;
+
+@Component
 public class LowercaseCharacterValidator implements PasswordValidator {
 
     @Override

@@ -19,6 +19,6 @@ public class PasswordController {
     public ResponseEntity<Void> newPassword(@RequestBody PasswordRequest body) {
         passwordService.validatePassword(body.password());
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 }

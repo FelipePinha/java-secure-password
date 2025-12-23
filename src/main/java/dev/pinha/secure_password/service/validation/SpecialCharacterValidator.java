@@ -1,6 +1,10 @@
 package dev.pinha.secure_password.service.validation;
 
-public class SpecialCharacterValidator {
+import dev.pinha.secure_password.infra.exception.PasswordValidationException;
+import org.springframework.stereotype.Component;
+
+@Component
+public class SpecialCharacterValidator implements PasswordValidator {
 
     @Override
     public void validate(String password) {
