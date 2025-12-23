@@ -8,16 +8,13 @@ public class SpecialCharacterValidator implements PasswordValidator {
 
     @Override
     public void validate(String password) {
-        int count = 0;
+        boolean hasSpecialCharacter = password.chars()
+                .anyMatch(c ->!Character.isLetterOrDigit(c));
 
-        for (int i = 0; i < password.length(); i++) {
-            if(!Character.isLetterOrDigit(password.charAt(i))) {
-                count++;
-            }
-        }
-
-        if(count == 0) {
-            throw new PasswordValidationException("A senha deve conter pelo menos um caractere especial");
+        if (!hasSpecialCharacter) {
+            throw new PasswordValidationException(
+                    "A senha deve conter pelo menos um caracter especial"
+            );
         }
     }
 }

@@ -8,16 +8,13 @@ public class LowercaseCharacterValidator implements PasswordValidator {
 
     @Override
     public void validate(String password) {
-        int count = 0;
+        boolean hasLowercase = password.chars()
+                .anyMatch(Character::isLowerCase);
 
-        for (int i = 0; i < password.length(); i++) {
-            if(!Character.isLowerCase(password.charAt(i))) {
-                count++;
-            }
-        }
-
-        if(count == password.length()) {
-            throw new PasswordValidationException("A senha deve conter pelo menos uma letra maiúscula");
+        if(!hasLowercase) {
+            throw new PasswordValidationException(
+                    "A senha deve conter pelo menos uma letra minúscula"
+            );
         }
     }
 }

@@ -8,16 +8,13 @@ public class UppercaseCharacterValidator implements PasswordValidator{
 
     @Override
     public void validate(String password) {
-        int count = 0;
+        boolean hasUppercase = password.chars()
+                .anyMatch(Character::isUpperCase);
 
-        for (int i = 0; i < password.length(); i++) {
-            if(!Character.isUpperCase(password.charAt(i))) {
-                count++;
-            }
-        }
-
-        if(count == password.length()) {
-            throw new PasswordValidationException("A senha deve conter pelo menos uma letra maiúscula");
+        if(!hasUppercase) {
+            throw new PasswordValidationException(
+                    "A senha deve conter pelo menos uma letra maiúsculua"
+            );
         }
     }
 }

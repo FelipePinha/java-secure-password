@@ -8,16 +8,13 @@ public class NumericDigitValidator implements PasswordValidator{
 
     @Override
     public void validate(String password) {
-        int count = 0;
+        boolean hasDigit = password.chars()
+                .anyMatch(Character::isDigit);
 
-        for (int i = 0; i < password.length(); i++) {
-            if(!Character.isDigit(password.charAt(i))) {
-                count++;
-            }
-        }
-
-        if(count == password.length()) {
-            throw new PasswordValidationException("A senha deve conter pelo menos um dígito numérico");
+        if (!hasDigit) {
+            throw new PasswordValidationException(
+                    "A senha deve conter pelo menos um número"
+            );
         }
     }
 }
