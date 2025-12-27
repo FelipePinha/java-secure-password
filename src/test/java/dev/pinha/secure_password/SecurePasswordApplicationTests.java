@@ -8,6 +8,7 @@ class SecurePasswordApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }
